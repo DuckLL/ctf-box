@@ -13,6 +13,7 @@ RUN apt install -yq \
     wget \
     make \
     gdb \
+    sudo \
     p7zip-full \
     libssh-dev \
     libffi-dev
