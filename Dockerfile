@@ -33,5 +33,6 @@ RUN git clone https://github.com/longld/peda.git ~/peda && echo "source ~/peda/p
 RUN cd ~ && git clone https://github.com/BinaryAnalysisPlatform/qira.git && cd qira/ && ./install.sh && ./fetchlibs.sh
 
 # dotfiles
-COPY ./.vimrc ~/.vimrc
-COPY ./.tmux.conf ~/.tmux.conf
+RUN cd ~ && git clone https://github.com/DuckLL/ctf-box.git
+RUN cp ~/ctf-box/.vimrc ~/.vimrc && vim +PluginInstal +qall
+RUN cp ~/ctf-box/.tmux.conf ~/.tmux.conf
