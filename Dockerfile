@@ -1,7 +1,9 @@
 FROM phusion/baseimage:latest
 
 # apt-get
-RUN dpkg --add-architecture i386 && apt update && apt install -yq \
+RUN dpkg --add-architecture i386
+RUN apt update
+RUN apt install -yq \
     g++-multilib \
     python-pip \
     git \
@@ -10,11 +12,13 @@ RUN dpkg --add-architecture i386 && apt update && apt install -yq \
     nasm \
     wget \
     make \
-    libssh-dev \
+    gdb \
     p7zip-full \
-    gdb
+    libssh-dev \
+    libffi-dev
 
 #pip
+RUN pip install --upgrade pip
 RUN pip install \
     ipython \
     pwntools \
