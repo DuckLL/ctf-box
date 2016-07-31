@@ -34,5 +34,6 @@ RUN cd ~ && git clone https://github.com/BinaryAnalysisPlatform/qira.git && cd q
 
 # dotfiles
 RUN cd ~ && git clone https://github.com/DuckLL/ctf-box.git
-RUN cp ~/ctf-box/.vimrc ~/.vimrc && vim +PluginInstal +qall
+RUN cp ~/ctf-box/.vimrc ~/.vimrc
+RUN mkdir ~/.vim/colors/ && cp ~/ctf-box/Tomorrow-Night-Bright.vim ~/.vim/colors
 RUN cp ~/ctf-box/.tmux.conf ~/.tmux.conf
