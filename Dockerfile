@@ -17,6 +17,7 @@ RUN apt install -yq \
     p7zip-full \
     libssh-dev \
     libffi-dev
+RUN apt upgrade -y
 
 #pip
 RUN pip install --upgrade pip
