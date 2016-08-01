@@ -10,10 +10,12 @@ RUN apt install -yq \
     vim \
     tmux \
     nasm \
+    nmap \
     wget \
     make \
     gdb \
     sudo \
+    bash-completion \
     p7zip-full \
     libssh-dev \
     libffi-dev
