@@ -12,7 +12,7 @@
 # Usage
 1. docker start ctf (if container is stoped)
 1. docker attach ctf (use tmux)(recommend)
-1. docker exec -it ctf (use window)(for newer)
+1. docker exec -it ctf (use window)(for beginner)
 
 # Include
 
