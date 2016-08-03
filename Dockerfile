@@ -35,6 +35,9 @@ RUN git clone https://github.com/longld/peda.git ~/peda && echo "source ~/peda/p
 # qira
 RUN cd ~ && git clone https://github.com/BinaryAnalysisPlatform/qira.git && cd qira/ && ./install.sh && ./fetchlibs.sh
 
+# enable ssh
+RUN rm -f /etc/service/sshd/down && /etc/my_init.d/00_regen_ssh_host_keys.sh
+
 # dotfiles
 ADD ./.tmux.conf ~/.tmux.conf
 ADD ./.vimrc ~/.vimrc
