@@ -39,7 +39,8 @@ RUN cd ~ && git clone https://github.com/BinaryAnalysisPlatform/qira.git && cd q
 RUN rm -f /etc/service/sshd/down && /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 # dotfiles
-ADD ./.tmux.conf ~/.tmux.conf
-ADD ./.vimrc ~/.vimrc
-ADD ./Tomorrow-Night-Bright.vim ~/.vim/colors/Tomorrow-Night-Bright.vim
+RUN cd ~ && git clone https://github.com/DuckLL/ctf-box.git
+RUN cp ~/ctf-box/.tmux.conf ~/.tmux.conf
+RUN cp ~/ctf-box/.vimrc ~/.vimtc
+RUN mkdir -p ~/.vim/colors/ && cp ~/ctf-box/Tomorrow-Night-Bright.vim ~/.vim/colors/Tomorrow-Night-Bright.vim
 RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim && vim +PluginInstal +qall
