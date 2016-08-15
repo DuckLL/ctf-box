@@ -1,9 +1,10 @@
 FROM phusion/baseimage:latest
 
 # apt-get
-RUN dpkg --add-architecture i386
-RUN apt update
-RUN apt install -yq \
+RUN dpkg --add-architecture i386 \
+&& apt-get update \
+&& apt-get upgrade -y
+RUN apt-get install -yq \
     g++-multilib \
     python-pip \
     git \
@@ -19,28 +20,51 @@ RUN apt install -yq \
     p7zip-full \
     libssh-dev \
     libffi-dev
-RUN apt upgrade -y
 
 #pip
 RUN pip install --upgrade pip
 RUN pip install \
     ipython \
-    pwntools \
+    ropgadget \
     capstone \
+    filebytes \
+    ropper \
     angr
 
+#dotfiles
+RUN cd ~ \
+&& git clone https://github.com/DuckLL/ctf-box.git \
+&& cp ~/ctf-box/.tmux.conf ~/.tmux.conf \
+&& cp ~/ctf-box/.vimrc ~/.vimrc \
+&& mkdir -p ~/.vim/colors/ \
+&& cp ~/ctf-box/Tomorrow-Night-Bright.vim ~/.vim/colors/Tomorrow-Night-Bright.vim
+
+#vim plugin
+RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
+&& vim +PluginInstall +qall
+
+#pwntools
+RUN pip install --upgrade git+https://github.com/binjitsu/binjitsu.git
+
+#pwngdb
+RUN cd ~ \
+&& git clone https://github.com/scwuaptx/Pwngdb.git \
+&& cp ~/Pwngdb/.gdbinit ~/
+
 #peda-gdb
-RUN git clone https://github.com/longld/peda.git ~/peda && echo "source ~/peda/peda.py" >> ~/.gdbinit
+RUN git clone https://github.com/longld/peda.git ~/peda \
+&& echo "source ~/peda/peda.py" >> ~/.gdbinit
 
-# qira
-RUN cd ~ && git clone https://github.com/BinaryAnalysisPlatform/qira.git && cd qira/ && ./install.sh && ./fetchlibs.sh
+#qira
+RUN cd ~ \
+&& git clone https://github.com/BinaryAnalysisPlatform/qira.git \
+&& cd qira/ \
+&& ./install.sh \
+&& ./fetchlibs.sh
 
-# enable ssh
-RUN rm -f /etc/service/sshd/down && /etc/my_init.d/00_regen_ssh_host_keys.sh
-
-# dotfiles
-RUN cd ~ && git clone https://github.com/DuckLL/ctf-box.git
-RUN cp ~/ctf-box/.tmux.conf ~/.tmux.conf
-RUN cp ~/ctf-box/.vimrc ~/.vimrc
-RUN mkdir -p ~/.vim/colors/ && cp ~/ctf-box/Tomorrow-Night-Bright.vim ~/.vim/colors/Tomorrow-Night-Bright.vim
-RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim && vim +PluginInstall +qall
+#pintool
+RUN wget http://software.intel.com/sites/landingpage/pintool/downloads/pin-3.0-76991-gcc-linux.tar.gz \
+&& tar -xvf pin-3.0-76991-gcc-linux.tar.gz \
+&& mv pin-3.0-76991-gcc-linux pin \
+&& cd pin/source/tools \
+&& make
