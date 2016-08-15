@@ -26,8 +26,6 @@ RUN pip install --upgrade pip
 RUN pip install \
     ipython \
     ropgadget \
-    capstone \
-    filebytes \
     ropper \
     angr
 
