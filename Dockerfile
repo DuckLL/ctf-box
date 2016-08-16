@@ -16,6 +16,7 @@ RUN apt-get install -yq \
     make \
     gdb \
     sudo \
+    exuberant-ctags \
     bash-completion \
     p7zip-full \
     libssh-dev \
