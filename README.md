@@ -18,11 +18,12 @@
 
 1. common-tools
 1. peda-gdb
+1. pwn-gdb
 1. ipython
 1. pwntools
 1. angr
 1. qira
-1. pingtools
+1. pintools
 
 # Tmux key mapping
 

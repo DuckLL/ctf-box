@@ -11,7 +11,6 @@ Plugin 'gmarik/Vundle.vim'
 
 "UI
 Plugin 'Lokaltog/vim-powerline'
-Plugin 'altercation/vim-colors-solarized'
 
 "Open file
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -22,32 +21,17 @@ let g:ctrlp_custom_ignore = {
 
 "Option
 Plugin 'majutsushi/tagbar'
-let g:tagbar_show_linenumbers = 2
+let g:tagbar_show_linenumbers = 1
 
 "Compete
 Plugin 'vim-scripts/AutoComplPop'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-
-"Hotkey
 Plugin 'vim-scripts/Auto-Pairs'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'tpope/vim-surround'
-Plugin 'ervandew/supertab'
-let SuperTabMappingForward="<S-Tab>"
-Plugin 'terryma/vim-multiple-cursors'
 
 "CSS
 Plugin 'gorodinskiy/vim-coloresque'
 
 "Python
 Plugin 'davidhalter/jedi-vim'
-"Plugin 'python_match.vim'
-
-"php
-Plugin 'StanAngeloff/php.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -99,7 +83,6 @@ autocmd filetype haml nnoremap <C-c> :w <bar> exec '!haml '.shellescape('%').' %
 autocmd filetype javascript nnoremap <C-c> :w <bar> exec '!nodejs '.shellescape('%') <CR>
 autocmd filetype lisp nnoremap <C-c> :w <bar> exec '!clisp '.shellescape('%') <CR>
 autocmd filetype shell nnoremap <C-c> :w <bar> exec '!bash '.shellescape('%') <CR>
-"autocmd filetype php nnoremap <C-c> :w <bar> exec '!php -f '.shellescape('%') <CR>
 autocmd filetype python nnoremap <C-c> :w <bar> exec '!python '.shellescape('%')<CR>
 autocmd filetype c nnoremap <C-c> :w <bar> exec '!gcc -o %:r '.shellescape('%').' -O2 && ./%:r'<CR>
 autocmd filetype cpp nnoremap <C-c> :w <bar> exec '!g++ -o %:r '.shellescape('%').' -std=c++11 -O2 && ./%:r'<CR>
