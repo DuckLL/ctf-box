@@ -1,34 +1,42 @@
 FROM phusion/baseimage:latest
 
+MAINTAINER DuckLL <a347liao@gmail.com>
+
+ENV TERM screen-256color
+
+EXPOSE 3002 4000
+
+CMD ["tmux"]
+
 # apt-get
 RUN dpkg --add-architecture i386 \
 && apt-get update \
 && apt-get upgrade -y
-RUN apt-get install -yq \
-    g++-multilib \
-    python-pip \
-    git \
-    vim \
-    tmux \
-    nasm \
-    nmap \
-    wget \
-    make \
-    gdb \
-    sudo \
-    exuberant-ctags \
-    bash-completion \
-    p7zip-full \
-    libssh-dev \
-    libffi-dev
+&& apt-get install -yq \
+   g++-multilib \
+   python-pip \
+   git \
+   vim \
+   tmux \
+   nasm \
+   nmap \
+   wget \
+   make \
+   gdb \
+   sudo \
+   exuberant-ctags \
+   bash-completion \
+   p7zip-full \
+   libssh-dev \
+   libffi-dev
 
 #pip
 RUN pip install --upgrade pip
-RUN pip install \
-    ipython \
-    ropgadget \
-    ropper \
-    angr
+&& pip install \
+   ipython \
+   ropgadget \
+   ropper \
+   angr
 
 #dotfiles
 RUN cd ~ \

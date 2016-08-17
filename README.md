@@ -7,7 +7,7 @@
 # Install
 
 1. docker pull duckll/ctf-box
-1. docker run -idt --name ctf -e TERM --security-opt seccomp:unconfined -p 3002:3002 -p 4000:4000 duckll/ctf-box tmux
+1. docker run -idt --name ctf -P --security-opt seccomp:unconfined duckll/ctf-box
 
 # Usage
 1. docker start ctf (if container is stoped)
@@ -22,6 +22,7 @@
 1. pwntools
 1. angr
 1. qira
+1. pingtools
 
 # Tmux key mapping
 
