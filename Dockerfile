@@ -31,7 +31,7 @@ RUN dpkg --add-architecture i386 \
    libffi-dev
 
 #pip
-RUN pip install --upgrade pip
+RUN pip install --upgrade pip \
 && pip install \
    ipython \
    ropgadget \
@@ -50,17 +50,16 @@ RUN cd ~ \
 RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
 && vim +PluginInstall +qall
 
-#pwntools
-RUN pip install --upgrade git+https://github.com/binjitsu/binjitsu.git
+#peda-gdb
+RUN git clone https://github.com/longld/peda.git ~/peda
 
 #pwngdb
 RUN cd ~ \
 && git clone https://github.com/scwuaptx/Pwngdb.git \
 && cp ~/Pwngdb/.gdbinit ~/
 
-#peda-gdb
-RUN git clone https://github.com/longld/peda.git ~/peda \
-&& echo "source ~/peda/peda.py" >> ~/.gdbinit
+#pwntools
+RUN pip install --upgrade git+https://github.com/binjitsu/binjitsu.git
 
 #qira
 RUN cd ~ \
@@ -72,6 +71,7 @@ RUN cd ~ \
 #pintool
 RUN wget http://software.intel.com/sites/landingpage/pintool/downloads/pin-3.0-76991-gcc-linux.tar.gz \
 && tar -xvf pin-3.0-76991-gcc-linux.tar.gz \
+&& rm pin-3.0-76991-gcc-linux.tar.gz \
 && mv pin-3.0-76991-gcc-linux pin \
 && cd pin/source/tools \
 && make
