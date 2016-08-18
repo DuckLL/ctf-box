@@ -11,7 +11,7 @@ CMD ["tmux"]
 # apt-get
 RUN dpkg --add-architecture i386 \
 && apt-get update \
-&& apt-get upgrade -y
+&& apt-get upgrade -y \
 && apt-get install -yq \
    g++-multilib \
    python-pip \
