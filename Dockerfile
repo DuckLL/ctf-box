@@ -1,4 +1,4 @@
-FROM phusion/baseimage:latest
+FROM debian
 
 MAINTAINER DuckLL <a347liao@gmail.com>
 
@@ -50,6 +50,9 @@ RUN cd ~ \
 RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
 && vim +PluginInstall +qall
 
+#pwntools
+RUN pip install --upgrade git+https://github.com/binjitsu/binjitsu.git
+
 #peda-gdb
 RUN git clone https://github.com/longld/peda.git ~/peda
 
@@ -57,9 +60,6 @@ RUN git clone https://github.com/longld/peda.git ~/peda
 RUN cd ~ \
 && git clone https://github.com/scwuaptx/Pwngdb.git \
 && cp ~/Pwngdb/.gdbinit ~/
-
-#pwntools
-RUN pip install --upgrade git+https://github.com/binjitsu/binjitsu.git
 
 #qira
 RUN cd ~ \
