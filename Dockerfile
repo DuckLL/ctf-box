@@ -23,7 +23,7 @@ RUN dpkg --add-architecture i386 \
    nmap \
    wget \
    make \
-   gdb \
+   gdb-multiarch \
    sudo \
    exuberant-ctags \
    bash-completion \
@@ -49,7 +49,10 @@ RUN cd ~ \
 && cp ~/ctf-box/.tmux.conf ~/.tmux.conf \
 && cp ~/ctf-box/.vimrc ~/.vimrc \
 && mkdir -p ~/.vim/colors/ \
-&& cp ~/ctf-box/Tomorrow-Night-Bright.vim ~/.vim/colors/Tomorrow-Night-Bright.vim
+&& cp ~/ctf-box/Tomorrow-Night-Bright.vim ~/.vim/colors/Tomorrow-Night-Bright.vim \
+&& mkdir /etc/qemu-binfmt \
+&& ln -s /usr/mipsel-linux-gnu /etc/qemu-binfmt/mipsel \
+&& ln -s /usr/arm-linux-gnueabihf /etc/qemu-binfmt/arm
 
 #vim plugin
 RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
