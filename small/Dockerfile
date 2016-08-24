@@ -22,7 +22,8 @@ RUN dpkg --add-architecture i386 \
    wget \
    make \
    gdb \
-   libssh-dev
+   libssh-dev \
+   libffi-dev
 
 #pip
 RUN pip install --upgrade pip \
