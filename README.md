@@ -2,12 +2,12 @@
 
 1. Easy to use
 1. Latest version tools
-1. Support multiarch
-1. tag:small(for beginner)
+1. tag:small(✨  unavailable)
+1. Support multiarch(✨)
 
 # Install
 
-1. docker pull duckll/ctf-box
+1. docker pull duckll/ctf-box:[latest,small]
 1. docker run -idt --name ctf -P --security-opt seccomp:unconfined duckll/ctf-box
 
 # Usage
