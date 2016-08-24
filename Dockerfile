@@ -11,7 +11,7 @@ CMD ["tmux"]
 # apt-get
 RUN dpkg --add-architecture i386 \
 && apt-add-repository --yes ppa:pwntools/binutils \
-&& echo -e "deb http://ppa.launchpad.net/pwntools/binutils/ubuntu vivid main\ndeb-src http://ppa.launchpad.net/pwntools/binutils/ubuntu vivid main" > /etc/apt/sources.list.d/pwntools-ubuntu-binutils-xenial.list \
+&& echo "deb http://ppa.launchpad.net/pwntools/binutils/ubuntu vivid main" > /etc/apt/sources.list.d/pwntools-ubuntu-binutils-xenial.list \
 && apt-get update \
 && apt-get upgrade -y \
 && apt-get install -yq \
