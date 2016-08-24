@@ -3,7 +3,7 @@
 1. Easy to use
 1. Latest version tools
 1. Support multiarch
-1. :small(for only x86_64)
+1. tag:small(for beginner)
 
 # Install
 
@@ -22,11 +22,10 @@
 1. peda-gdb
 1. pwn-gdb
 1. pwntools
-(below only in latest)
-1. qemu
-1. angr
-1. qira
-1. pintools
+1. qemu(✨)
+1. angr(✨)
+1. qira(✨)
+1. pintools(✨)
 
 # Tmux key mapping
 
