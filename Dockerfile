@@ -11,7 +11,8 @@ CMD ["tmux"]
 # apt-get
 RUN dpkg --add-architecture i386 \
 && apt-add-repository --yes ppa:pwntools/binutils \
-; apt-get update \
+&& echo -e "deb http://ppa.launchpad.net/pwntools/binutils/ubuntu vivid main\ndeb-src http://ppa.launchpad.net/pwntools/binutils/ubuntu vivid main" > /etc/apt/sources.list.d/pwntools-ubuntu-binutils-xenial.list \
+&& apt-get update \
 && apt-get upgrade -y \
 && apt-get install -yq \
    g++-multilib \
@@ -19,8 +20,6 @@ RUN dpkg --add-architecture i386 \
    git \
    vim \
    tmux \
-   nasm \
-   nmap \
    wget \
    make \
    gdb-multiarch \
