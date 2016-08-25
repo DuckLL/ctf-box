@@ -22,8 +22,8 @@ RUN dpkg --add-architecture i386 \
    nmap \
    python-pip \
    tmux \
-   wget \
-   vim
+   vim \
+   wget
 
 #pip
 RUN pip install --upgrade pip \
