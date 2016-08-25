@@ -1,4 +1,4 @@
-FROM phusion/baseimage:latest
+FROM duckll/ctf-box:small
 
 MAINTAINER DuckLL <a347liao@gmail.com>
 
@@ -9,58 +9,31 @@ EXPOSE 3002 4000
 CMD ["tmux"]
 
 # apt-get
-RUN dpkg --add-architecture i386 \
-&& apt-add-repository --yes ppa:pwntools/binutils \
+RUN apt-add-repository --yes ppa:pwntools/binutils \
 && echo "deb http://ppa.launchpad.net/pwntools/binutils/ubuntu vivid main" > /etc/apt/sources.list.d/pwntools-ubuntu-binutils-xenial.list \
 && apt-get update \
 && apt-get upgrade -y \
 && apt-get install -yq \
-   g++-multilib \
-   python-pip \
-   git \
-   vim \
-   tmux \
-   wget \
-   make \
-   gdb-multiarch \
-   sudo \
-   exuberant-ctags \
    bash-completion \
+   binutils-*-linux-gnu* \
+   exuberant-ctags \
+   gdb-multiarch \
+   libc6-*-cross \
+   make \
    p7zip-full \
-   libssh-dev \
-   libffi-dev \
    qemu \
    qemu-user \
    qemu-user-static \
-   libc6-*-cross \
-   binutils-*-linux-gnu*
+   sudo
 
 #pip
-RUN pip install --upgrade pip \
-&& pip install \
-   ipython \
-   pwntools \
+RUN pip install \
    angr
 
-#dotfiles
-RUN cd ~ \
-&& git clone https://github.com/DuckLL/ctf-box.git \
-&& cp ~/ctf-box/.tmux.conf ~/.tmux.conf \
-&& cp ~/ctf-box/.vimrc ~/.vimrc \
-&& mkdir -p ~/.vim/colors/ \
-&& cp ~/ctf-box/Tomorrow-Night-Bright.vim ~/.vim/colors/Tomorrow-Night-Bright.vim \
-&& mkdir /etc/qemu-binfmt \
+#qemu
+RUN mkdir /etc/qemu-binfmt \
 && ln -s /usr/mipsel-linux-gnu /etc/qemu-binfmt/mipsel \
 && ln -s /usr/arm-linux-gnueabihf /etc/qemu-binfmt/arm
-
-#vim plugin
-RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
-&& vim +PluginInstall +qall
-
-#gdb
-RUN git clone https://github.com/longld/peda.git ~/peda \
-&& git clone https://github.com/scwuaptx/Pwngdb.git ~/Pwngdb \
-&& cp ~/Pwngdb/.gdbinit ~/
 
 #qira
 RUN cd ~ \
