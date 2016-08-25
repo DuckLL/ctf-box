@@ -13,17 +13,17 @@ RUN dpkg --add-architecture i386 \
 && apt-get update \
 && apt-get upgrade -y \
 && apt-get install -yq \
-   g++-multilib \
-   python-pip \
-   git \
-   vim \
-   tmux \
-   nmap \
-   wget \
-   make \
+   exuberant-ctags \
    gdb \
+   git \
+   g++-multilib \
+   libffi-dev \
    libssh-dev \
-   libffi-dev
+   nmap \
+   python-pip \
+   tmux \
+   wget \
+   vim
 
 #pip
 RUN pip install --upgrade pip \
@@ -38,6 +38,10 @@ RUN cd ~ \
 && cp ~/ctf-box/.vimrc ~/.vimrc \
 && mkdir -p ~/.vim/colors/ \
 && cp ~/ctf-box/Tomorrow-Night-Bright.vim ~/.vim/colors/Tomorrow-Night-Bright.vim
+
+#vim plugin
+RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
+&& vim +PluginInstall +qall
 
 #gdb
 RUN git clone https://github.com/longld/peda.git ~/peda \
