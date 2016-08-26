@@ -25,8 +25,8 @@
 1. pwn-gdb
 1. pwntools
 1. qemu(✨)
-1. angr(✨)
-1. qira(🏆)
+1. qira(✨)
+1. angr(🏆)
 1. pintools(🏆)
 
 # Tmux key mapping
