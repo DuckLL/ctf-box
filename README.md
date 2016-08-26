@@ -2,8 +2,10 @@
 
 1. Easy to use
 1. Latest version tools
-1. tag:small(✨  unavailable)
-1. Support multiarch(✨)
+1. Support multiarch
+1. small
+1. mid(✨)
+1. latest(✨🏆)
 
 # Install
 
@@ -24,8 +26,8 @@
 1. pwntools
 1. qemu(✨)
 1. angr(✨)
-1. qira(✨)
-1. pintools(✨)
+1. qira(🏆)
+1. pintools(🏆)
 
 # Tmux key mapping
 
