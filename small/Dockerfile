@@ -4,8 +4,6 @@ MAINTAINER DuckLL <a347liao@gmail.com>
 
 ENV TERM screen-256color
 
-EXPOSE 3002 4000
-
 CMD ["tmux"]
 
 # apt-get
@@ -13,17 +11,20 @@ RUN dpkg --add-architecture i386 \
 && apt-get update \
 && apt-get upgrade -y \
 && apt-get install -yq \
+   bash-completion \
    exuberant-ctags \
    gdb \
    git \
    g++-multilib \
    libffi-dev \
    libssh-dev \
+   nasm \
    nmap \
    python-pip \
    tmux \
    vim \
-   wget
+   wget \
+&& apt-get clean
 
 #pip
 RUN pip install --upgrade pip \
