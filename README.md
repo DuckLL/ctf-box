@@ -10,7 +10,7 @@
 # Install
 
 1. docker pull duckll/ctf-box:[latest,small]
-1. docker run -idt --name ctf -P --security-opt seccomp:unconfined duckll/ctf-box
+1. docker run -idt --name ctf -P --privileged --security-opt seccomp:unconfined duckll/ctf-box
 
 # Usage
 1. docker start ctf (if container is stoped)
