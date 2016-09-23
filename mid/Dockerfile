@@ -6,7 +6,7 @@ ENV TERM screen-256color
 
 EXPOSE 3002 4000
 
-CMD ["tmux"]
+CMD ["/sbin/my_init","--","sh"]
 
 # apt-get
 RUN apt-add-repository --yes ppa:pwntools/binutils \

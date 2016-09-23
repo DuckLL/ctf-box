@@ -4,7 +4,7 @@ MAINTAINER DuckLL <a347liao@gmail.com>
 
 ENV TERM screen-256color
 
-CMD ["tmux"]
+CMD ["/sbin/my_init","--","sh"]
 
 # apt-get
 RUN dpkg --add-architecture i386 \
