@@ -3,8 +3,9 @@ FROM phusion/baseimage:latest
 MAINTAINER DuckLL <a347liao@gmail.com>
 
 ENV TERM screen-256color
+ENV LC_ALL en_US.UTF-8
 
-CMD ["/sbin/my_init","--","sh"]
+CMD ["/sbin/my_init"]
 
 # apt-get
 RUN dpkg --add-architecture i386 \

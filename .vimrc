@@ -23,28 +23,32 @@ let g:ctrlp_custom_ignore = {
 Plugin 'majutsushi/tagbar'
 let g:tagbar_show_linenumbers = 1
 
+"Hotkey
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'michaeljsmith/vim-indent-object'
+
 "Compete
 Plugin 'vim-scripts/AutoComplPop'
-Plugin 'vim-scripts/Auto-Pairs'
-
-"CSS
-Plugin 'gorodinskiy/vim-coloresque'
+Plugin 'ervandew/supertab'
+let SuperTabMappingForward="<S-Tab>"
 
 "Python
 Plugin 'davidhalter/jedi-vim'
+Plugin 'metakirby5/codi.vim'
 
 call vundle#end()
 filetype plugin indent on
 
 "Keymap
+let mapleader=","
 nmap ; :
 vmap ; :
 nmap <C-t> :TagbarToggle<CR><C-w>l
 nmap <C-a> ggVG
+nmap <Space> za
 nmap <C-y> :set paste!<CR>
 nmap <C-5> :set fileencoding=big5<CR>
 nmap <C-8> :set fileencoding=utf8<CR>
-vmap <Enter> <Plug>(EasyAlign)
 
 "Setting
 syntax on " Color syntax
@@ -75,7 +79,6 @@ set foldenable
 set foldmethod=indent
 set foldcolumn=1
 set foldlevel=2
-nmap <Space> za
 
 "Run fils
 autocmd filetype ruby nnoremap <C-c> :w <bar> exec '!ruby '.shellescape('%') <CR>
