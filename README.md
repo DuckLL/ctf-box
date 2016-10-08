@@ -12,7 +12,7 @@
 
 # Usage
 1. docker start ctf
-1. docker exec -it test script /dev/null -c 'tmux'
+1. docker exec -it ctf script /dev/null -c 'tmux'
 
 # Include
 1. common-tools
