@@ -37,7 +37,7 @@ RUN pip install --upgrade pip \
 
 #dotfiles
 RUN cd ~ \
-&& git clone https://github.com/DuckLL/ctf-box.git --depth 1 \
+&& git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
 && cp ~/ctf-box/.tmux.conf ~/.tmux.conf \
 && cp ~/ctf-box/.vimrc ~/.vimrc \
 
