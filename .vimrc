@@ -37,6 +37,7 @@ let SuperTabMappingForward="<S-Tab>"
 
 " Python
 NeoBundle 'hdima/python-syntax'
+let python_highlight_all = 1
 NeoBundle 'zchee/deoplete-jedi'
 
 call neobundle#end()
