@@ -6,7 +6,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " UI
-NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 NeoBundle 'tomasr/molokai'
@@ -23,38 +22,18 @@ NeoBundle 'Shougo/vimproc.vim', {
 \     'unix' : 'gmake',
 \    },
 \ }
-"NeoBundle 'Shougo/unite.vim'
-NeoBundle 'majutsushi/tagbar'
-let g:tagbar_show_linenumbers = 1
-NeoBundle 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-    \ 'file': '\v\.(exe|so|dll|swp|zip|7z|rar|gz|xz|apk|dmg|iso|jpg|png|pdf)$',
-\ }
 
 " Autocomplete
-NeoBundle 'MarcWeber/vim-addon-mw-utils'
-NeoBundle 'tomtom/tlib_vim'
-NeoBundle 'garbas/vim-snipmate'
-NeoBundle 'honza/vim-snippets'
 NeoBundle 'Shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup = 1
 
 " Hotkey
 NeoBundle 'vim-scripts/auto-pairs'
 NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'tpope/vim-surround'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle 'ervandew/supertab'
 let SuperTabMappingForward="<S-Tab>"
-
-" Markdown
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'plasticboy/vim-markdown'
-
-" CSS
-NeoBundle 'gko/vim-coloresque'
 
 " Python
 NeoBundle 'hdima/python-syntax'
