@@ -1,91 +1,138 @@
-"Tips
-"replace all :[range(1,$)]s/[cmp]/[rep]/g[c]
-""ay yard to a reg
+" install neobundle
 
-"Vundle
 set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-"UI
-Plugin 'Lokaltog/vim-powerline'
+" UI
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'vim-airline/vim-airline'
+let g:airline_powerline_fonts = 1
+NeoBundle 'tomasr/molokai'
+let g:molokai_original = 1
+let g:rehash256 = 1
 
-"Open file
-Plugin 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	\ 'file': '\v\.(exe|so|dll|swp|zip|7z|rar|gz|xz|apk|dmg|iso|jpg|png|pdf)$',
-	\ }
-
-"Option
-Plugin 'majutsushi/tagbar'
+" Feature
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+"NeoBundle 'Shougo/unite.vim'
+NeoBundle 'majutsushi/tagbar'
 let g:tagbar_show_linenumbers = 1
+NeoBundle 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+    \ 'file': '\v\.(exe|so|dll|swp|zip|7z|rar|gz|xz|apk|dmg|iso|jpg|png|pdf)$',
+\ }
 
-"Hotkey
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'michaeljsmith/vim-indent-object'
+" Autocomplete
+NeoBundle 'MarcWeber/vim-addon-mw-utils'
+NeoBundle 'tomtom/tlib_vim'
+NeoBundle 'garbas/vim-snipmate'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'Shougo/deoplete.nvim'
+let g:deoplete#enable_at_startup = 1
 
-"Compete
-Plugin 'vim-scripts/AutoComplPop'
-Plugin 'ervandew/supertab'
+" Hotkey
+NeoBundle 'vim-scripts/auto-pairs'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'michaeljsmith/vim-indent-object'
+NeoBundle 'ervandew/supertab'
 let SuperTabMappingForward="<S-Tab>"
 
-"Python
-Plugin 'davidhalter/jedi-vim'
-Plugin 'metakirby5/codi.vim'
+" Markdown
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'plasticboy/vim-markdown'
 
-call vundle#end()
+" CSS
+NeoBundle 'gko/vim-coloresque'
+
+" Python
+NeoBundle 'hdima/python-syntax'
+NeoBundle 'zchee/deoplete-jedi'
+
+call neobundle#end()
 filetype plugin indent on
+NeoBundleCheck
 
-"Keymap
-let mapleader=","
-nmap ; :
-vmap ; :
-nmap <C-t> :TagbarToggle<CR><C-w>l
-nmap <C-a> ggVG
+" Hotkey
+nmap ;       :
+vmap ;       :
+nmap <C-a>   ggVG
+nmap <C-l>   :nohl<CR>
+nmap <C-s>   :wq<CR>
+nmap <C-t>   :TagbarToggle<CR><C-w>l
+nmap <C-y>   :set paste!<CR>
+nmap <C-5>   :set fileencoding=big5<CR>
+nmap <C-8>   :set fileencoding=utf8<CR>
 nmap <Space> za
-nmap <C-y> :set paste!<CR>
-nmap <C-5> :set fileencoding=big5<CR>
-nmap <C-8> :set fileencoding=utf8<CR>
+vmap <Enter> <Plug>(EasyAlign)
+nmap <Tab>   gt
+nmap <S-Tab> gT
+" evil shift!
+cab Q   q
+cab Qa  qa
+cab W   w
+cab X   x
+cab WQ  wq
+cab Wq  wq
+cab wQ  wq
+cab Set set
 
-"Setting
-syntax on " Color syntax
-color Tomorrow-Night-Bright	" Colorscheme
-
-set backspace=start,eol,indent	" Backspcae
-set smartindent " Autoindent
-set number " Line number
-set mouse=a " Use mouse
-set clipboard=unnamed " Clipboard
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
+" setting
+let mapleader=" "                      " leader key
+syntax on                              " Color syntax
+color molokai                          " Theme
+set backspace=start,eol,indent         " Backspcae
+set smartindent                        " Autoindent
+set number                             " Line number
+set ruler                              " show line info
+set scrolloff=3                        " scroll while close under
+set mouse=a                            " Use mouse
+set clipboard=unnamed                  " Clipboard
+set laststatus=2                       " Always show the statusline
+set encoding=utf-8                     " Necessary to show Unicode glyphs
 set fileencodings=utf8,big5,gbk,latin1 " set fileopentype
-set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
-set cursorline
-set hls
-set ignorecase
-set incsearch
+set t_Co=256                           " Explicitly tell Vim that the terminal supports 256 colors
+set cursorline                         " height corrent line
+set hls                                " search heightlight
+set ignorecase                         " ignore case in search
+set incsearch                          " search back
+set showcmd                            " show command
+set timeoutlen=300                     " escape delay
+set wildmenu                           " Autocomplete menu
 
-"tab setting
+" Tab
 set expandtab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 
-"folding
+" Folding
 set foldenable
 set foldmethod=indent
 set foldcolumn=1
 set foldlevel=2
 
-"Run fils
-autocmd filetype ruby nnoremap <C-c> :w <bar> exec '!ruby '.shellescape('%') <CR>
-autocmd filetype haml nnoremap <C-c> :w <bar> exec '!haml '.shellescape('%').' %:r.html' <CR><CR>
+" Filetype Related
+autocmd FileType python setlocal et sta  sw=4 sts=4 cc=80 completeopt-=preview
+autocmd FileType html   setlocal et sw=2 sts=2
+autocmd FileType ruby   setlocal et sw=2 sts=2
+
+" Run file
+autocmd filetype ruby       nnoremap <C-c> :w <bar> exec '!ruby '.shellescape('%') <CR>
 autocmd filetype javascript nnoremap <C-c> :w <bar> exec '!nodejs '.shellescape('%') <CR>
-autocmd filetype lisp nnoremap <C-c> :w <bar> exec '!clisp '.shellescape('%') <CR>
-autocmd filetype shell nnoremap <C-c> :w <bar> exec '!bash '.shellescape('%') <CR>
-autocmd filetype python nnoremap <C-c> :w <bar> exec '!python '.shellescape('%')<CR>
-autocmd filetype c nnoremap <C-c> :w <bar> exec '!gcc -o %:r '.shellescape('%').' -O2 && ./%:r'<CR>
-autocmd filetype cpp nnoremap <C-c> :w <bar> exec '!g++ -o %:r '.shellescape('%').' -std=c++11 -O2 && ./%:r'<CR>
+autocmd filetype shell      nnoremap <C-c> :w <bar> exec '!bash '.shellescape('%') <CR>
+autocmd filetype php        nnoremap <C-c> :w <bar> exec '!php -f '.shellescape('%') <CR>
+autocmd filetype python     nnoremap <C-c> :w <bar> exec '!python '.shellescape('%')<CR>
+autocmd filetype c          nnoremap <C-c> :w <bar> exec '!gcc -o %:r '.shellescape('%').' -O2 && ./%:r'<CR>
+autocmd filetype cpp        nnoremap <C-c> :w <bar> exec '!g++ -o %:r '.shellescape('%').' -std=c++11 -O2 && ./%:r'<CR>

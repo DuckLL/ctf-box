@@ -9,6 +9,7 @@ CMD ["/sbin/my_init"]
 
 # apt-get
 RUN dpkg --add-architecture i386 \
+&& add-apt-repository ppa:neovim-ppa/unstable \
 && apt-get update \
 && apt-get upgrade -y \
 && apt-get install -yq \
@@ -21,31 +22,30 @@ RUN dpkg --add-architecture i386 \
    libssh-dev \
    nasm \
    nmap \
+   neovim \
    python-pip \
    tmux \
-   vim \
    wget \
 && apt-get clean
 
 #pip
 RUN pip install --upgrade pip \
 && pip install \
+   neovim \
    ipython \
    pwntools
 
 #dotfiles
 RUN cd ~ \
-&& git clone https://github.com/DuckLL/ctf-box.git \
+&& git clone https://github.com/DuckLL/ctf-box.git --depth 1 \
 && cp ~/ctf-box/.tmux.conf ~/.tmux.conf \
 && cp ~/ctf-box/.vimrc ~/.vimrc \
-&& mkdir -p ~/.vim/colors/ \
-&& cp ~/ctf-box/Tomorrow-Night-Bright.vim ~/.vim/colors/Tomorrow-Night-Bright.vim
 
 #vim plugin
-RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
-&& vim +PluginInstall +qall
+git clone https://github.com/Shougo/neobundle.vim --depth 1 ~/.vim/bundle/neobundle.vim
+nvim -c "NeoBundleInstall" -c "q"
 
 #gdb
-RUN git clone https://github.com/longld/peda.git ~/peda \
-&& git clone https://github.com/scwuaptx/Pwngdb.git ~/Pwngdb \
+RUN git clone https://github.com/longld/peda.git --depth 1 ~/peda \
+&& git clone https://github.com/scwuaptx/Pwngdb.git --depth 1 ~/Pwngdb \
 && cp ~/Pwngdb/.gdbinit ~/
