@@ -36,10 +36,9 @@ RUN pip install --upgrade pip \
    pwntools
 
 #dotfiles
-RUN cd ~ \
-&& git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
+RUN git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
 && cp ~/ctf-box/.tmux.conf ~/.tmux.conf \
-&& cp ~/ctf-box/.vimrc ~/.vimrc \
+&& cp ~/ctf-box/.vimrc ~/.vimrc
 
 #vim plugin
 git clone https://github.com/Shougo/neobundle.vim --depth 1 ~/.vim/bundle/neobundle.vim
