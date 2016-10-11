@@ -41,8 +41,8 @@ RUN git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
 && cp ~/ctf-box/.vimrc ~/.vimrc
 
 #vim plugin
-RUN git clone https://github.com/Shougo/neobundle.vim --depth 1 ~/.vim/bundle/neobundle.vim
-nvim -c "NeoBundleInstall" -c "q"
+RUN git clone https://github.com/Shougo/neobundle.vim --depth 1 ~/.vim/bundle/neobundle.vim \
+&& nvim -c "NeoBundleInstall" -c "q"
 
 #gdb
 RUN git clone https://github.com/longld/peda.git --depth 1 ~/peda \
