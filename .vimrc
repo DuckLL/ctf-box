@@ -26,14 +26,24 @@ NeoBundle 'Shougo/vimproc.vim', {
 " Autocomplete
 NeoBundle 'Shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup = 1
+NeoBundle 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Hotkey
 NeoBundle 'vim-scripts/auto-pairs'
-NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle 'ervandew/supertab'
 let SuperTabMappingForward="<S-Tab>"
+NeoBundle 'easymotion/vim-easymotion'
+let g:EasyMotion_smartcase = 1
 
 " Python
 NeoBundle 'hdima/python-syntax'
@@ -45,19 +55,25 @@ filetype plugin indent on
 NeoBundleCheck
 
 " Hotkey
+map  n       <Plug>(easymotion-next)
+map  N       <Plug>(easymotion-prev)
 nmap ;       :
 vmap ;       :
+map  /       <Plug>(easymotion-sn)
+omap /       <Plug>(easymotion-tn)
+nmap \       zR
 nmap <C-a>   ggVG
+nmap <C-k>   <Plug>(easymotion-w)
 nmap <C-l>   :nohl<CR>
-nmap <C-s>   :wq<CR>
 nmap <C-t>   :TagbarToggle<CR><C-w>l
 nmap <C-y>   :set paste!<CR>
 nmap <C-5>   :set fileencoding=big5<CR>
 nmap <C-8>   :set fileencoding=utf8<CR>
-nmap <Space> za
+nmap <Enter> za
 vmap <Enter> <Plug>(EasyAlign)
 nmap <Tab>   gt
 nmap <S-Tab> gT
+
 " evil shift!
 cab Q   q
 cab Qa  qa
