@@ -9,7 +9,7 @@ CMD ["/sbin/my_init"]
 
 # apt-get
 RUN dpkg --add-architecture i386 \
-&& add-apt-repository ppa:neovim-ppa/unstable \
+&& add-apt-repository --yes ppa:neovim-ppa/unstable \
 && apt-get update \
 && apt-get upgrade -y \
 && apt-get install -yq \
