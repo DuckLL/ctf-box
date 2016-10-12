@@ -1,19 +1,20 @@
-" install neobundle
+" install Vundle
 
 set nocompatible
-set runtimepath+=~/.vim/bundle/neobundle.vim/
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call Vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
 " UI
-NeoBundle 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
-NeoBundle 'tomasr/molokai'
+Plugin 'tomasr/molokai'
 let g:molokai_original = 1
 let g:rehash256 = 1
 
 " Feature
-NeoBundle 'Shougo/vimproc.vim', {
+Plugin 'Shougo/vimproc.vim', {
 \ 'build' : {
 \     'windows' : 'tools\\update-dll-mingw',
 \     'cygwin' : 'make -f make_cygwin.mak',
@@ -24,9 +25,9 @@ NeoBundle 'Shougo/vimproc.vim', {
 \ }
 
 " Autocomplete
-NeoBundle 'Shougo/deoplete.nvim'
+Plugin 'Shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup = 1
-NeoBundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -37,22 +38,21 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " Hotkey
-NeoBundle 'vim-scripts/auto-pairs'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'michaeljsmith/vim-indent-object'
-NeoBundle 'ervandew/supertab'
+Plugin 'vim-scripts/auto-pairs'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'ervandew/supertab'
 let SuperTabMappingForward="<S-Tab>"
-NeoBundle 'easymotion/vim-easymotion'
+Plugin 'easymotion/vim-easymotion'
 let g:EasyMotion_smartcase = 1
 
 " Python
-NeoBundle 'hdima/python-syntax'
+Plugin 'hdima/python-syntax'
 let python_highlight_all = 1
-NeoBundle 'zchee/deoplete-jedi'
+Plugin 'zchee/deoplete-jedi'
 
-call neobundle#end()
+call Vundle#end()
 filetype plugin indent on
-NeoBundleCheck
 
 " Hotkey
 map  n       <Plug>(easymotion-next)

@@ -48,8 +48,8 @@ RUN git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
 && echo 'alias vim="nvim"' >> ~/.bashrc
 
 #vim plugin
-RUN git clone https://github.com/Shougo/neobundle.vim --depth 1 ~/.vim/bundle/neobundle.vim \
-&& cat /dev/null | nvim +NeoBundleInstall +qall
+RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
+&& vim +PluginInstall +qall
 
 #gdb
 RUN git clone https://github.com/longld/peda.git --depth 1 ~/peda \
