@@ -87,7 +87,6 @@ cab Set set
 " setting
 let mapleader=" "                      " leader key
 syntax on                              " Color syntax
-color molokai                          " Theme
 set backspace=start,eol,indent         " Backspcae
 set smartindent                        " Autoindent
 set number                             " Line number
@@ -132,3 +131,4 @@ autocmd filetype php        nnoremap <C-c> :w <bar> exec '!php -f '.shellescape(
 autocmd filetype python     nnoremap <C-c> :w <bar> exec '!python '.shellescape('%')<CR>
 autocmd filetype c          nnoremap <C-c> :w <bar> exec '!gcc -o %:r '.shellescape('%').' -O2 && ./%:r'<CR>
 autocmd filetype cpp        nnoremap <C-c> :w <bar> exec '!g++ -o %:r '.shellescape('%').' -std=c++11 -O2 && ./%:r'<CR>
+

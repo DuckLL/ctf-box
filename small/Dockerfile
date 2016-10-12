@@ -45,7 +45,8 @@ RUN git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
 
 #vim plugin
 RUN git clone https://github.com/Shougo/neobundle.vim --depth 1 ~/.vim/bundle/neobundle.vim \
-&& nvim +NeoBundleInstall +qall
+&& nvim +NeoBundleInstall +qall \
+&& echo 'color=molokai' >> ~/.vimrc
 
 #gdb
 RUN git clone https://github.com/longld/peda.git --depth 1 ~/peda \
