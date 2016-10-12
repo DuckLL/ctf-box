@@ -48,7 +48,7 @@ RUN git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
 && echo 'alias vim="nvim"' >> ~/.bashrc
 
 #vim plugin
-RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
+RUN git clone https://github.com/gmarik/Vundle.vim.git --depth 1 ~/.vim/bundle/Vundle.vim \
 && vim +PluginInstall +qall
 
 #gdb
