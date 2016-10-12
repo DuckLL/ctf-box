@@ -40,7 +40,7 @@ RUN git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
 && cp ~/ctf-box/.tmux.conf ~/.tmux.conf \
 && cp ~/ctf-box/.vimrc ~/.vimrc \
 && mkdir -p ~/.config/nvim \
-&& ln -s ~/.vimrc ./.config/nvim/init.vim \
+&& ln -s ~/.vimrc ~/.config/nvim/init.vim \
 && echo 'alias vim="nvim"' >> ~/.bashrc
 
 #vim plugin
