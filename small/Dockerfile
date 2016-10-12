@@ -24,6 +24,7 @@ RUN dpkg --add-architecture i386 \
    nmap \
    neovim \
    python-pip \
+   python3-pip \
    tmux \
    wget \
 && apt-get clean
@@ -33,7 +34,10 @@ RUN pip install --upgrade pip \
 && pip install \
    neovim \
    ipython \
-   pwntools
+   pwntools \
+&& pip3 install --upgrade pip \
+&& pip install \
+   neovim
 
 #dotfiles
 RUN git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
@@ -45,8 +49,7 @@ RUN git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
 
 #vim plugin
 RUN git clone https://github.com/Shougo/neobundle.vim --depth 1 ~/.vim/bundle/neobundle.vim \
-&& nvim +NeoBundleInstall +qall \
-&& echo 'color=molokai' >> ~/.vimrc
+&& cat /dev/null | nvim +NeoBundleInstall +qall
 
 #gdb
 RUN git clone https://github.com/longld/peda.git --depth 1 ~/peda \
