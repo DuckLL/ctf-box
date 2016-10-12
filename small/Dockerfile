@@ -45,7 +45,7 @@ RUN git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
 
 #vim plugin
 RUN git clone https://github.com/Shougo/neobundle.vim --depth 1 ~/.vim/bundle/neobundle.vim \
-&& nvim -c "NeoBundleInstall" -c "q"
+&& nvim +NeoBundleInstall +qall
 
 #gdb
 RUN git clone https://github.com/longld/peda.git --depth 1 ~/peda \
