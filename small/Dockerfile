@@ -49,7 +49,7 @@ RUN git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
 
 #vim plugin
 RUN git clone https://github.com/gmarik/Vundle.vim.git --depth 1 ~/.vim/bundle/Vundle.vim \
-&& vim +PluginInstall +qall
+&& nvim +PluginInstall +qall
 
 #gdb
 RUN git clone https://github.com/longld/peda.git --depth 1 ~/peda \
