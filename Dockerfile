@@ -10,7 +10,7 @@ EXPOSE 3002
 CMD ["/sbin/my_init"]
 
 #pip
-RUN pip install \
+RUN pip2 install \
    angr
 
 #pintool
