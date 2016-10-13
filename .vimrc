@@ -1,20 +1,19 @@
-" install Vundle
+" install dein
 
 set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call Vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+call dein#begin(expand('~/.vim/dein'))
+call dein#add('Shougo/dein.vim')
 
 " UI
-Plugin 'vim-airline/vim-airline'
+call dein#add('vim-airline/vim-airline')
 let g:airline_powerline_fonts = 1
-Plugin 'tomasr/molokai'
+call dein#add('tomasr/molokai')
 let g:molokai_original = 1
 let g:rehash256 = 1
 
 " Feature
-Plugin 'Shougo/vimproc.vim', {
+call dein#add('Shougo/vimproc.vim', {
 \ 'build' : {
 \     'windows' : 'tools\\update-dll-mingw',
 \     'cygwin' : 'make -f make_cygwin.mak',
@@ -22,36 +21,39 @@ Plugin 'Shougo/vimproc.vim', {
 \     'linux' : 'make',
 \     'unix' : 'gmake',
 \    },
-\ }
+\ })
 
 " Autocomplete
-Plugin 'Shougo/deoplete.nvim'
+call dein#add('MarcWeber/vim-addon-mw-utils')
+call dein#add('tomtom/tlib_vim')
+call dein#add('garbas/vim-snipmate')
+call dein#add('honza/vim-snippets')
+call dein#add('Shougo/deoplete.nvim')
 let g:deoplete#enable_at_startup = 1
-Plugin 'scrooloose/syntastic'
+call dein#add( 'scrooloose/syntastic')
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " Hotkey
-Plugin 'vim-scripts/auto-pairs'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'ervandew/supertab'
+call dein#add('vim-scripts/auto-pairs')
+call dein#add('scrooloose/nerdcommenter')
+call dein#add('michaeljsmith/vim-indent-object')
+call dein#add('ervandew/supertab')
 let SuperTabMappingForward="<S-Tab>"
-Plugin 'easymotion/vim-easymotion'
+call dein#add('easymotion/vim-easymotion')
 let g:EasyMotion_smartcase = 1
 
 " Python
-Plugin 'hdima/python-syntax'
+call dein#add('hdima/python-syntax')
 let python_highlight_all = 1
-Plugin 'zchee/deoplete-jedi'
+call dein#add('zchee/deoplete-jedi')
 
-call Vundle#end()
+call dein#end()
 filetype plugin indent on
 
 " Hotkey
@@ -89,29 +91,29 @@ let mapleader=" "                      " leader key
 syntax on                              " Color syntax
 color molokai                          " Theme
 set backspace=start,eol,indent         " Backspcae
-set smartindent                        " Autoindent
-set number                             " Line number
-set ruler                              " show line info
-set scrolloff=3                        " scroll while close under
-set mouse=a                            " Use mouse
 set clipboard=unnamed                  " Clipboard
-set laststatus=2                       " Always show the statusline
+set cursorline                         " height corrent line
 set encoding=utf-8                     " Necessary to show Unicode glyphs
 set fileencodings=utf8,big5,gbk,latin1 " set fileopentype
-set t_Co=256                           " Explicitly tell Vim that the terminal supports 256 colors
-set cursorline                         " height corrent line
 set hls                                " search heightlight
 set ignorecase                         " ignore case in search
 set incsearch                          " search back
+set laststatus=2                       " Always show the statusline
+set mouse=a                            " Use mouse
+set number                             " Line number
+set ruler                              " show line info
+set scrolloff=7                        " scroll while close under
 set showcmd                            " show command
+set smartindent                        " Autoindent
+set t_Co=256                           " Explicitly tell Vim that the terminal supports 256 colors
 set timeoutlen=300                     " escape delay
 set wildmenu                           " Autocomplete menu
 
 " Tab
 set expandtab
 set shiftwidth=4
-set tabstop=4
 set softtabstop=4
+set tabstop=4
 
 " Folding
 set foldenable
@@ -132,4 +134,3 @@ autocmd filetype php        nnoremap <C-c> :w <bar> exec '!php -f '.shellescape(
 autocmd filetype python     nnoremap <C-c> :w <bar> exec '!python '.shellescape('%')<CR>
 autocmd filetype c          nnoremap <C-c> :w <bar> exec '!gcc -o %:r '.shellescape('%').' -O2 && ./%:r'<CR>
 autocmd filetype cpp        nnoremap <C-c> :w <bar> exec '!g++ -o %:r '.shellescape('%').' -std=c++11 -O2 && ./%:r'<CR>
-
