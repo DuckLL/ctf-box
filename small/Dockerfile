@@ -50,7 +50,7 @@ RUN git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
 #vim plugin
 RUN mkdir -p ~/.vim/dein/repos/github.com/Shougo/dein.vim \
 && git clone https://github.com/Shougo/dein.vim.git --depth 1 ~/.vim/dein/repos/github.com/Shougo/dein.vim \
-&& nvim +":silent! call dein#install()" +:q > /dev/null 2>&1
+&& nvim +":silent! call dein#install()" +:q
 
 #gdb
 RUN git clone https://github.com/longld/peda.git --depth 1 ~/peda \
