@@ -56,7 +56,6 @@ nmap \       zR
 nmap <C-a>   ggVG
 nmap <C-k>   <Plug>(easymotion-w)
 nmap <C-l>   :nohl<CR>
-nmap <C-t>   :TagbarToggle<CR><C-w>l
 nmap <C-y>   :set paste!<CR>
 nmap <C-5>   :set fileencoding=big5<CR>
 nmap <C-8>   :set fileencoding=utf8<CR>
