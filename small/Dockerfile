@@ -48,8 +48,9 @@ RUN git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
 && echo 'alias vim="nvim"' >> ~/.bashrc
 
 #vim plugin
-RUN git clone https://github.com/gmarik/Vundle.vim.git --depth 1 ~/.vim/bundle/Vundle.vim \
-&& nvim +PluginInstall +qall
+RUN mkdir -p ~/.vim/dein/repos/github.com/Shougo/dein.vim \
+&& git clone https://github.com/Shougo/dein.vim.git --depth 1 ~/.vim/dein/repos/github.com/Shougo/dein.vim \
+&& nvim -c "call dein#install()" -c "q"
 
 #gdb
 RUN git clone https://github.com/longld/peda.git --depth 1 ~/peda \
