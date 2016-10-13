@@ -30,8 +30,8 @@ RUN dpkg --add-architecture i386 \
 && apt-get clean
 
 #pip
-RUN pip install --upgrade pip \
-&& pip install \
+RUN pip2 install --upgrade pip \
+&& pip2 install \
    neovim \
    ipython \
    pwntools \
