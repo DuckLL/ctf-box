@@ -36,7 +36,7 @@ RUN pip install --upgrade pip \
    ipython \
    pwntools \
 && pip3 install --upgrade pip \
-&& pip install \
+&& pip3 install \
    neovim
 
 #dotfiles

@@ -14,7 +14,6 @@ RUN apt-add-repository --yes ppa:pwntools/binutils \
 && echo "deb http://ppa.launchpad.net/pwntools/binutils/ubuntu vivid main" > /etc/apt/sources.list.d/pwntools-ubuntu-binutils-xenial.list \
 && apt-get update \
 && apt-get install -yq \
-   bash-completion \
    binutils-*-linux-gnu* \
    gdb-multiarch \
    libc6-*-cross \
