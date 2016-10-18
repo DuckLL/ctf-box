@@ -100,10 +100,6 @@ set t_Co=256                           " Explicitly tell Vim that the terminal s
 set timeoutlen=300                     " escape delay
 set wildmenu                           " Autocomplete menu
 
-" Python Path
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
-
 " Tab
 set expandtab
 set shiftwidth=4
