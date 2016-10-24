@@ -1,26 +1,26 @@
-" Install dein
-
+" Install vim-plug
 set nocompatible
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-call dein#begin(expand('~/.vim/dein'))
-call dein#add('Shougo/dein.vim')
-let g:dein#types#git#clone_depth = 1
+call plug#begin()
 
 " UI
-call dein#add('vim-airline/vim-airline')
+Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
-call dein#add('tomasr/molokai')
+Plug 'tomasr/molokai'
 let g:molokai_original = 1
 let g:rehash256 = 1
 
+" Feature
+Plug 'majutsushi/tagbar'
+let g:tagbar_show_linenumbers = 1
+
 " Autocomplete
-call dein#add('MarcWeber/vim-addon-mw-utils',{'on_i': '1'})
-call dein#add('tomtom/tlib_vim',{'on_i': '1'})
-call dein#add('garbas/vim-snipmate',{'on_i': '1'})
-call dein#add('honza/vim-snippets',{'on_i': '1'})
-call dein#add('Shougo/deoplete.nvim',{'on_i': '1'})
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+Plug 'Shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup = 1
-call dein#add( 'scrooloose/syntastic')
+Plug  'scrooloose/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -30,21 +30,21 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " Hotkey
-call dein#add('vim-scripts/auto-pairs')
-call dein#add('scrooloose/nerdcommenter')
-call dein#add('michaeljsmith/vim-indent-object')
-call dein#add('ervandew/supertab',{'on_i': '1'})
+Plug 'vim-scripts/auto-pairs'
+Plug 'scrooloose/nerdcommenter'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'ervandew/supertab'
 let SuperTabMappingForward="<S-Tab>"
-call dein#add('easymotion/vim-easymotion',{'on_map': '<Plug>'})
+Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_smartcase = 1
 
 " Python
-call dein#add('hdima/python-syntax',{'on_ft': ['python']})
+Plug 'hdima/python-syntax',{'for': ['python']}
 let python_highlight_all = 1
-call dein#add('zchee/deoplete-jedi',{'on_ft': ['python']})
+Plug 'zchee/deoplete-jedi',{'for': ['python']}
 
-call dein#end()
-call dein#check_install()
+call plug#end()
+
 filetype plugin indent on
 
 " Hotkey
@@ -56,7 +56,7 @@ map  /       <Plug>(easymotion-sn)
 omap /       <Plug>(easymotion-tn)
 nmap \       zR
 nmap <C-a>   ggVG
-nmap <C-k>   <Plug>(easymotion-w)
+nmap <C-k>   H<Plug>(easymotion-w)
 nmap <C-l>   :nohl<CR>
 nmap <C-t>   :TagbarToggle<CR><C-w>l
 nmap <C-y>   :set paste!<CR>
@@ -93,7 +93,7 @@ set laststatus=2                       " Always show the statusline
 set mouse=a                            " Use mouse
 set number                             " Line number
 set ruler                              " show line info
-set scrolloff=7                        " scroll while close under
+set scrolloff=5                        " scroll while close under
 set showcmd                            " show command
 set smartindent                        " Autoindent
 set t_Co=256                           " Explicitly tell Vim that the terminal supports 256 colors
@@ -119,9 +119,9 @@ autocmd FileType ruby   setlocal et sw=2 sts=2
 
 " Run File
 autocmd filetype ruby       nnoremap <C-c> :w <bar> exec '!ruby '.shellescape('%') <CR>
-autocmd filetype javascript nnoremap <C-c> :w <bar> exec '!nodejs '.shellescape('%') <CR>
+autocmd filetype javascript nnoremap <C-c> :w <bar> exec '!node '.shellescape('%') <CR>
 autocmd filetype shell      nnoremap <C-c> :w <bar> exec '!bash '.shellescape('%') <CR>
 autocmd filetype php        nnoremap <C-c> :w <bar> exec '!php -f '.shellescape('%') <CR>
 autocmd filetype python     nnoremap <C-c> :w <bar> exec '!python '.shellescape('%')<CR>
-autocmd filetype c          nnoremap <C-c> :w <bar> exec '!gcc -o %:r '.shellescape('%').' -O2 && ./%:r'<CR>
-autocmd filetype cpp        nnoremap <C-c> :w <bar> exec '!g++ -o %:r '.shellescape('%').' -std=c++11 -O2 && ./%:r'<CR>
+autocmd filetype c          nnoremap <C-c> :w <bar> exec '!gcc -o %:r '.shellescape('%').' -O3 && ./%:r'<CR>
+autocmd filetype cpp        nnoremap <C-c> :w <bar> exec '!g++ -o %:r '.shellescape('%').' -std=c++11 -O3 && ./%:r'<CR>
