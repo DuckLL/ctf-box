@@ -121,7 +121,7 @@ autocmd FileType ruby   setlocal et sw=2 sts=2
 autocmd filetype ruby       nnoremap <C-c> :w <bar> exec '!ruby '.shellescape('%') <CR>
 autocmd filetype javascript nnoremap <C-c> :w <bar> exec '!node '.shellescape('%') <CR>
 autocmd filetype shell      nnoremap <C-c> :w <bar> exec '!bash '.shellescape('%') <CR>
-autocmd filetype php        nnoremap <C-c> :w <bar> exec '!php -f '.shellescape('%') <CR>
-autocmd filetype python     nnoremap <C-c> :w <bar> exec '!python '.shellescape('%')<CR>
+autocmd filetype php        nnoremap <C-c> :w <bar> exec '!php -f '.shellescape('%')<CR>
+autocmd filetype python     nnoremap <C-c> :w <bar> exec 'term python '.shellescape('%')<CR>
 autocmd filetype c          nnoremap <C-c> :w <bar> exec '!gcc -o %:r '.shellescape('%').' -O3 && ./%:r'<CR>
 autocmd filetype cpp        nnoremap <C-c> :w <bar> exec '!g++ -o %:r '.shellescape('%').' -std=c++11 -O3 && ./%:r'<CR>
