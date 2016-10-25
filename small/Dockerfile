@@ -49,7 +49,7 @@ RUN git clone https://github.com/DuckLL/ctf-box.git --depth 1 ~/ctf-box \
 
 #vim plugin
 RUN curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
-&& nvim +PlugInstall +:q +:q
+&& nvim +PlugInstall +q +UpdateRemotePlugins +q
 
 #gdb
 RUN git clone https://github.com/longld/peda.git --depth 1 ~/peda \
