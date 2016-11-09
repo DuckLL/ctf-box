@@ -23,4 +23,4 @@
 1. qemu(✨)
 1. qira(✨)
 1. angr(🏆)
-1. pintools(🏆)
+1. pintool(🏆)

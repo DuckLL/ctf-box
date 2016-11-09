@@ -4,6 +4,7 @@ MAINTAINER DuckLL <a347liao@gmail.com>
 
 # apt-get
 RUN dpkg --add-architecture i386 \
+&& apt-fast update \
 && apt-fast -y install \
    gdb \
    g++-multilib \
