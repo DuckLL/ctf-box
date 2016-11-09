@@ -2,12 +2,7 @@ FROM duckll/ctf-box:mid
 
 MAINTAINER DuckLL <a347liao@gmail.com>
 
-ENV TERM screen-256color
-ENV LC_ALL en_US.UTF-8
-
 EXPOSE 3002
-
-CMD ["/sbin/my_init"]
 
 #pip
 RUN pip2 install \

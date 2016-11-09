@@ -2,18 +2,13 @@ FROM duckll/ctf-box:small
 
 MAINTAINER DuckLL <a347liao@gmail.com>
 
-ENV TERM screen-256color
-ENV LC_ALL en_US.UTF-8
-
 EXPOSE 3002
-
-CMD ["/sbin/my_init"]
 
 # apt-get
 RUN apt-add-repository --yes ppa:pwntools/binutils \
 && echo "deb http://ppa.launchpad.net/pwntools/binutils/ubuntu vivid main" > /etc/apt/sources.list.d/pwntools-ubuntu-binutils-xenial.list \
-&& apt-get update \
-&& apt-get install -yq \
+&& apt-fast update \
+&& apt-fast -y install \
    binutils-*-linux-gnu* \
    gdb-multiarch \
    libc6-*-cross \
@@ -23,7 +18,7 @@ RUN apt-add-repository --yes ppa:pwntools/binutils \
    qemu-user \
    qemu-user-static \
    sudo \
-&& apt-get clean
+&& apt-fast clean
 
 #qemu
 RUN mkdir /etc/qemu-binfmt \
