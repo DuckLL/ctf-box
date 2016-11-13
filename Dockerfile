@@ -4,6 +4,11 @@ MAINTAINER DuckLL <a347liao@gmail.com>
 
 EXPOSE 3002
 
+# binwalk
+RUN git clone https://github.com/devttys0/binwalk.git \
+&& ./binwalk/setup.py install \
+&& rm -rf ./binwalk
+
 #pip
 RUN pip2 install \
    angr

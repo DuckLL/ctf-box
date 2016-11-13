@@ -26,8 +26,7 @@ RUN mkdir /etc/qemu-binfmt \
 && ln -s /usr/arm-linux-gnueabihf /etc/qemu-binfmt/arm
 
 #qira
-RUN cd ~ \
-&& git clone https://github.com/BinaryAnalysisPlatform/qira.git \
+RUN git clone https://github.com/BinaryAnalysisPlatform/qira.git \
 && cd qira/ \
 && ./install.sh \
 && ./fetchlibs.sh
