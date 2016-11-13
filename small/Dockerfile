@@ -17,7 +17,8 @@ RUN dpkg --add-architecture i386 \
 #pip
 RUN pip2 install \
    ipython \
-   pwntools
+   pwntools \
+&& rm -rf /tmp/*
 
 #gdb
 RUN git clone https://github.com/longld/peda.git --depth 1 ~/peda \

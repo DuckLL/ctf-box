@@ -22,5 +22,6 @@
 1. pwntools
 1. qemu(✨)
 1. qira(✨)
+1. binwalk(🏆)
 1. angr(🏆)
 1. pintool(🏆)
