@@ -6,7 +6,9 @@ EXPOSE 3002
 
 # binwalk
 RUN git clone https://github.com/devttys0/binwalk.git \
-&& ./binwalk/setup.py install \
+&& cd binwalk \
+&& ./setup.py install \
+&& cd ../ \
 && rm -rf ./binwalk
 
 #pip
