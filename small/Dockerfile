@@ -10,8 +10,10 @@ RUN dpkg --add-architecture i386 \
    g++-multilib \
    libffi-dev \
    libssh-dev \
+   ltrace \
    nasm \
    nmap \
+   strace \
 && apt-fast clean
 
 #pip

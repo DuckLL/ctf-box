@@ -13,7 +13,10 @@ RUN git clone https://github.com/devttys0/binwalk.git \
 
 #pip
 RUN pip2 install \
-   angr
+   angr \
+   pycrypto \
+   sympy \
+&& rm -rf /tmp/*
 
 #pintool
 RUN wget http://software.intel.com/sites/landingpage/pintool/downloads/pin-3.0-76991-gcc-linux.tar.gz \
