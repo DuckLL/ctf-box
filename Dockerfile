@@ -12,8 +12,9 @@ Run wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz \
 && make \
 && cd qemu_mode \
 && ./build_qemu_support.sh \
-&& echo core > /proc/sys/kernel/core_pattern \
 && echo 'export PATH="/afl-2.35b:$PATH"' >> ~/.bashrc
+&& wget https://raw.githubusercontent.com/DuckLL/ctf-box/master/afl.sh -O /etc/my_init.d/afl.sh \
+&& chmod +x /etc/my_init.d/afl.sh
 
 # binwalk
 RUN git clone https://github.com/devttys0/binwalk.git --depth 1 \
