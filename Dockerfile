@@ -8,15 +8,17 @@ EXPOSE 3002
 Run wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz \
 && apt-fast install -y libtool-bin \
 && tar -xvf ./afl-latest.tgz \
-&& cd afl-2.35b \
+&& cd ./afl-2.35b \
 && make \
-&& cd qemu_mode \
+&& cd ./qemu_mode \
 && ./build_qemu_support.sh \
-&& echo 'export PATH="/afl-2.35b:$PATH"' >> ~/.bashrc
+&& echo 'export PATH="/afl-2.35b:$PATH"' >> ~/.bashrc \
+&& cd / \
+&& rm ./afl-latest.tgz
 
 # binwalk
 RUN git clone https://github.com/devttys0/binwalk.git --depth 1 \
-&& cd binwalk \
+&& cd ./binwalk \
 && ./setup.py install \
 && cd ../ \
 && rm -rf ./binwalk
