@@ -12,7 +12,6 @@ Run wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz \
 && make \
 && cd ./qemu_mode \
 && ./build_qemu_support.sh \
-&& echo 'export PATH="/afl-2.35b:$PATH"' >> ~/.bashrc \
 && cd / \
 && rm ./afl-latest.tgz
 
