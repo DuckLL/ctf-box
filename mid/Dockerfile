@@ -25,7 +25,7 @@ RUN apt-add-repository --yes ppa:pwntools/binutils \
 # && ln -s /usr/mipsel-linux-gnu /etc/qemu-binfmt/mipsel \
 # && ln -s /usr/arm-linux-gnueabihf /etc/qemu-binfmt/arm
 
-# qira qemu pintool
+# qira qemu
 RUN git clone https://github.com/BinaryAnalysisPlatform/qira.git --depth 1 \
 && cd ./qira \
 && ./install.sh \
@@ -41,8 +41,4 @@ RUN git clone https://github.com/BinaryAnalysisPlatform/qira.git --depth 1 \
 && echo 'export PATH="/qemu/ppc-linux-user:$PATH"' >> ~/.bashrc \
 && echo 'export PATH="/qemu/x86_64-linux-user:$PATH"' >> ~/.bashrc \
 && ./pin_build.sh \
-&& ln -s /qira/tracers/pin/pin-2.14-71313-gcc.4.4.7-linux/ /pin \
-&& cd /pin/source/tools/ManualExamples \
-&& make CXX=g++-4.9 \
-&& echo 'export PATH="/pin:$PATH"' >> ~/.bashrc \
 && rm -rf /tmp/*
