@@ -50,7 +50,6 @@ RUN pip2 install \
    pwntools \
 && rm -rf /tmp/*
 
-#gdb
-RUN git clone https://github.com/longld/peda.git --depth 1 ~/peda \
-&& git clone https://github.com/scwuaptx/Pwngdb.git --depth 1 ~/Pwngdb \
+# gdb
+RUN git clone https://github.com/scwuaptx/Pwngdb.git --depth 1 ~/Pwngdb \
 && cp ~/Pwngdb/.gdbinit ~/
