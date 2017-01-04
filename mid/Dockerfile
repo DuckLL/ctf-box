@@ -1,4 +1,4 @@
-FROM duckll/ctf-box:small
+FROM duckll/base
 
 MAINTAINER DuckLL <a347liao@gmail.com>
 
