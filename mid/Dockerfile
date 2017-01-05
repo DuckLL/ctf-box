@@ -26,8 +26,6 @@ RUN apt-fast update \
 
 # apt
 RUN dpkg --add-architecture i386 \
-&& apt-add-repository --yes ppa:pwntools/binutils \
-&& echo "deb http://ppa.launchpad.net/pwntools/binutils/ubuntu vivid main" > /etc/apt/sources.list.d/pwntools-ubuntu-binutils-xenial.list \
 && apt-fast update \
 && apt-fast -y install \
    binutils-*-linux-gnu* \
