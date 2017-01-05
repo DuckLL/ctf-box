@@ -30,7 +30,10 @@ RUN dpkg --add-architecture i386 \
 && apt-fast -y install \
    binutils-*-linux-gnu* \
    gdb-multiarch \
-   g++-multilib \
+   g++ \
+   libc6:i386 \
+   libncurses5:i386 \
+   libstdc++6:i386 \
    libffi-dev \
    libssh-dev \
    libc6-*-cross \
