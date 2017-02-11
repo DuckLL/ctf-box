@@ -14,15 +14,15 @@ RUN dpkg --add-architecture i386 \
    nasm \
    nmap \
    strace \
-&& apt-fast clean
+&& apt-fast clean \
 
 #pip
-RUN pip2 install \
+&& pip2 install \
    ipython \
    pwntools \
-&& rm -rf /tmp/*
+&& rm -rf /tmp/* \
 
 #gdb
-RUN git clone https://github.com/longld/peda.git --depth 1 ~/peda \
+&& git clone https://github.com/longld/peda.git --depth 1 ~/peda \
 && git clone https://github.com/scwuaptx/Pwngdb.git --depth 1 ~/Pwngdb \
 && cp ~/Pwngdb/.gdbinit ~/
