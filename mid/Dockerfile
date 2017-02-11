@@ -37,7 +37,7 @@ RUN dpkg --add-architecture i386 \
 && ./install.sh \
 && ./fetchlibs.sh \
 && cd ./tracers/ \
-&& ./qemu_build.sh \
+# && ./qemu_build.sh \
 && ln -s /qira/tracers/qemu/qemu-latest /qemu \
 && echo 'export PATH="/qemu/aarch64-linux-user:$PATH"' >> ~/.bashrc \
 && echo 'export PATH="/qemu/arm-linux-user:$PATH"' >> ~/.bashrc \
