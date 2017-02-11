@@ -4,8 +4,29 @@ MAINTAINER DuckLL <a347liao@gmail.com>
 
 EXPOSE 3002
 
+# qira qemu
+RUN git clone https://github.com/BinaryAnalysisPlatform/qira.git --depth 1 \
+&& apt-fast update \
+&& apt-fast -y install \
+   sudo \
+&& cd ./qira \
+&& ./install.sh \
+&& ./fetchlibs.sh \
+&& cd ./tracers/ \
+&& ./qemu_build.sh \
+&& ln -s /qira/tracers/qemu/qemu-latest /qemu \
+&& echo 'export PATH="/qemu/aarch64-linux-user:$PATH"' >> ~/.bashrc \
+&& echo 'export PATH="/qemu/arm-linux-user:$PATH"' >> ~/.bashrc \
+&& echo 'export PATH="/qemu/i386-linux-user:$PATH"' >> ~/.bashrc \
+&& echo 'export PATH="/qemu/mips-linux-user:$PATH"' >> ~/.bashrc \
+&& echo 'export PATH="/qemu/mipsel-linux-user:$PATH"' >> ~/.bashrc \
+&& echo 'export PATH="/qemu/ppc-linux-user:$PATH"' >> ~/.bashrc \
+&& echo 'export PATH="/qemu/x86_64-linux-user:$PATH"' >> ~/.bashrc \
+&& ./pin_build.sh \
+&& rm -rf /tmp/* \
+
 # apt
-RUN dpkg --add-architecture i386 \
+&& dpkg --add-architecture i386 \
 && apt-fast update \
 && apt-fast -y install \
    binutils-*-linux-gnu* \
@@ -23,31 +44,12 @@ RUN dpkg --add-architecture i386 \
    nmap \
    p7zip-full \
    strace \
-   sudo \
 && apt-fast clean \
 
 #pip
 && pip2 install \
    ipython \
    pwntools \
-
-# qira qemu
-&& git clone https://github.com/BinaryAnalysisPlatform/qira.git --depth 1 \
-&& cd ./qira \
-&& ./install.sh \
-&& ./fetchlibs.sh \
-&& cd ./tracers/ \
-# && ./qemu_build.sh \
-&& ln -s /qira/tracers/qemu/qemu-latest /qemu \
-&& echo 'export PATH="/qemu/aarch64-linux-user:$PATH"' >> ~/.bashrc \
-&& echo 'export PATH="/qemu/arm-linux-user:$PATH"' >> ~/.bashrc \
-&& echo 'export PATH="/qemu/i386-linux-user:$PATH"' >> ~/.bashrc \
-&& echo 'export PATH="/qemu/mips-linux-user:$PATH"' >> ~/.bashrc \
-&& echo 'export PATH="/qemu/mipsel-linux-user:$PATH"' >> ~/.bashrc \
-&& echo 'export PATH="/qemu/ppc-linux-user:$PATH"' >> ~/.bashrc \
-&& echo 'export PATH="/qemu/x86_64-linux-user:$PATH"' >> ~/.bashrc \
-&& ./pin_build.sh \
-&& rm -rf /tmp/* \
 
 # gdb
 && git clone https://github.com/longld/peda.git --depth 1 ~/peda \
