@@ -5,7 +5,7 @@ MAINTAINER DuckLL <a347liao@gmail.com>
 EXPOSE 3002
 
 # apt
-Run apt-fast update \
+RUN apt-fast update \
 && apt-fast install -y \
    libtool-bin \
    libpcre++-dev \
@@ -29,7 +29,7 @@ Run apt-fast update \
 # afl
 && wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz \
 && tar -xvf ./afl-latest.tgz \
-&& cd ./afl-2.35b \
+&& cd ./afl-2.39b \
 && make \
 && cd ./qemu_mode \
 && ./build_qemu_support.sh \
@@ -53,6 +53,7 @@ Run apt-fast update \
 && make \
 
 #volatility
+&& cd / \
 && git clone https://github.com/volatilityfoundation/volatility.git \
 && cd ./volatility \
 && python setup.py install 
