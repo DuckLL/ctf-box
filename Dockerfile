@@ -56,6 +56,6 @@ RUN apt-fast update \
 && cd / \
 && git clone https://github.com/volatilityfoundation/volatility.git \
 && cd ./volatility \
-&& python setup.py install 
+&& python setup.py install \
 && cd ../ \
 && rm -rf ./volatility
