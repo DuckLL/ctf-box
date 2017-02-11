@@ -25,3 +25,4 @@
 1. binwalk(🏆)
 1. angr(🏆)
 1. pintool(🏆)
+1. volatility(🏆)
