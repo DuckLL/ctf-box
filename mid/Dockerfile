@@ -29,7 +29,6 @@ RUN dpkg --add-architecture i386 \
 && pip2 install \
    ipython \
    pwntools \
-&& rm -rf /tmp/* \
 
 # qira qemu
 && apt-fast update \
