@@ -23,6 +23,7 @@ RUN dpkg --add-architecture i386 \
    nmap \
    p7zip-full \
    strace \
+   sudo \
 && apt-fast clean \
 
 #pip
@@ -31,8 +32,6 @@ RUN dpkg --add-architecture i386 \
    pwntools \
 
 # qira qemu
-&& apt-fast update \
-&& apt-fast -y install sudo \
 && git clone https://github.com/BinaryAnalysisPlatform/qira.git --depth 1 \
 && cd ./qira \
 && ./install.sh \
