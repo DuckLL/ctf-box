@@ -28,7 +28,7 @@ RUN apt-fast update \
 
 # afl
 && wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz \
-&& tar -xvf ./afl-latest.tgz \
+&& tar -zxvf ./afl-latest.tgz \
 && cd ./afl-2.50b \
 && make \
 && cd ./qemu_mode \
@@ -43,16 +43,16 @@ RUN apt-fast update \
 && cd ../ \
 && rm -rf ./binwalk \
 
-#pintool
-&& wget http://software.intel.com/sites/landingpage/pintool/downloads/pin-3.0-76991-gcc-linux.tar.gz \
-&& tar -xvf pin-3.0-76991-gcc-linux.tar.gz \
-&& rm pin-3.0-76991-gcc-linux.tar.gz \
-&& mv pin-3.0-76991-gcc-linux pin \
+# pintool
+&& wget http://software.intel.com/sites/landingpage/pintool/downloads/pin-3.4-97438-gf90d1f746-gcc-linux.tar.gz \
+&& tar -zxvf pin-3.4-97438-gf90d1f746-gcc-linux.tar.gz \
+&& rm pin-3.4-97438-gf90d1f746-gcc-linux.tar.gz \
+&& mv pin-3.4-97438-gf90d1f746-gcc-linux pin \
 && echo 'export PATH="/pin:$PATH"' >> ~/.bashrc \
 && cd pin/source/tools \
 && make \
 
-#volatility
+# volatility
 && cd / \
 && git clone https://github.com/volatilityfoundation/volatility.git \
 && cd ./volatility \
