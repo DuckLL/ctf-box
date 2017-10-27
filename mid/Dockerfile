@@ -11,6 +11,13 @@ RUN git clone https://github.com/BinaryAnalysisPlatform/qira.git --depth 1 \
    sudo \
 && cd ./qira \
 && ./install.sh \
+
+# fix flask bug
+&& source ./venv/bin/activate \
+&& pip uninstall -y Flask-SocketIO \
+&& pip install Flask-SoketIO==2.9.1 \
+&& deactivate \
+
 && ./fetchlibs.sh \
 && cd ./tracers/ \
 && ./qemu_build.sh \
