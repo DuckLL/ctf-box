@@ -4,6 +4,8 @@ MAINTAINER DuckLL <a347liao@gmail.com>
 
 EXPOSE 3002
 
+COPY ./flask-fix.sh /tmp/
+
 # qira qemu
 RUN git clone https://github.com/BinaryAnalysisPlatform/qira.git --depth 1 \
 && apt-fast update \
@@ -13,10 +15,7 @@ RUN git clone https://github.com/BinaryAnalysisPlatform/qira.git --depth 1 \
 && ./install.sh \
 
 # fix flask bug
-&& source ./venv/bin/activate \
-&& pip uninstall -y Flask-SocketIO \
-&& pip install Flask-SoketIO==2.9.1 \
-&& deactivate \
+&& /tmp/flask-fix.sh \
 
 && ./fetchlibs.sh \
 && cd ./tracers/ \
