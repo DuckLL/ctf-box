@@ -4,7 +4,7 @@ MAINTAINER DuckLL <a347liao@gmail.com>
 
 EXPOSE 3002
 
-COPY ./flask-fix.sh /tmp/
+COPY ./flask-fix.sh /qira
 
 # qira qemu
 RUN git clone https://github.com/BinaryAnalysisPlatform/qira.git --depth 1 \
@@ -14,9 +14,8 @@ RUN git clone https://github.com/BinaryAnalysisPlatform/qira.git --depth 1 \
 && cd ./qira \
 && ./install.sh \
 
-# fix flask bug
-&& chmod +x /tmp/flask-fix.sh \
-&& /tmp/flask-fix.sh \
+# fix flask bug but cannot automatic
+&& chmod +x /qira/flask-fix.sh \
 
 && ./fetchlibs.sh \
 && cd ./tracers/ \
