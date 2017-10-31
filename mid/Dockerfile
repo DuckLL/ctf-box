@@ -15,6 +15,7 @@ RUN git clone https://github.com/BinaryAnalysisPlatform/qira.git --depth 1 \
 && ./install.sh \
 
 # fix flask bug
+&& chmod +x /tmp/flask-fix.sh \
 && /tmp/flask-fix.sh \
 
 && ./fetchlibs.sh \
