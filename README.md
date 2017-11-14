@@ -16,13 +16,14 @@
 # Include
 1. common-tools
 1. ipython
-1. peda-gdb
 1. pwn-gdb
 1. pwntools
 1. qemu
 1. qira
+1. one_gadget(🏆)
+1. heapinfo(🏆)
+1. seccomp-tools(🏆)
 1. afl(🏆)
 1. binwalk(🏆)
 1. angr(🏆)
-1. pintool(🏆)
 1. volatility(🏆)
