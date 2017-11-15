@@ -38,7 +38,7 @@ RUN apt-fast update \
 # afl
 && wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz \
 && tar -zxvf ./afl-latest.tgz \
-&& cd ./afl-2.51b \
+&& cd ./afl-2.52b \
 && make \
 && cd ./qemu_mode \
 && ./build_qemu_support.sh \
