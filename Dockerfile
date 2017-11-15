@@ -10,6 +10,7 @@ RUN apt-fast update \
    libtool-bin \
    libpcre++-dev \
    pcregrep \
+   ruby-dev \
 && apt-fast clean \
 
 # pip
@@ -20,7 +21,6 @@ RUN apt-fast update \
    openpyxl \
    pycrypto \
    Pillow \
-   ruby-dev \
    sympy \
    ujson \
    xortool \
