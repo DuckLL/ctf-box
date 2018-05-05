@@ -1,7 +1,5 @@
 FROM duckll/base
 
-MAINTAINER DuckLL <a347liao@gmail.com>
-
 EXPOSE 3002
 
 COPY ./flask-fix.sh /tmp
