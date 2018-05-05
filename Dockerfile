@@ -1,7 +1,5 @@
 FROM duckll/ctf-box:mid
 
-MAINTAINER DuckLL <a347liao@gmail.com>
-
 EXPOSE 3002
 
 # apt
