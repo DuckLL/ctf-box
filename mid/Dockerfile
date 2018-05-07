@@ -3,7 +3,7 @@ FROM duckll/base
 EXPOSE 3002
 
 COPY ./flask-fix.sh /tmp
-COPY ./python.snippets ~/.config/nvim/plugged/vim-snippets/UltiSnips
+COPY ./python.snippets /root/.config/nvim/plugged/vim-snippets/UltiSnips
 
 # qira qemu
 RUN git clone https://github.com/BinaryAnalysisPlatform/qira.git --depth 1 \
