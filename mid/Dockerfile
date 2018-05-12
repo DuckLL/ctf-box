@@ -11,11 +11,6 @@ RUN git clone https://github.com/DuckLL/qira.git --depth 1 \
    sudo \
 && cd ./qira \
 && ./install.sh \
-
-# fix flask bug but cannot automatic
-&& cp /tmp/flask-fix.sh /qira/flask-fix.sh \
-&& chmod +x /qira/flask-fix.sh \
-
 && ./fetchlibs.sh \
 && cd ./tracers/ \
 && ./qemu_build.sh \
