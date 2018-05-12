@@ -2,11 +2,10 @@ FROM duckll/base
 
 EXPOSE 3002
 
-COPY ./flask-fix.sh /tmp
 COPY ./python.snippets /root/.config/nvim/plugged/vim-snippets/UltiSnips
 
 # qira qemu
-RUN git clone https://github.com/BinaryAnalysisPlatform/qira.git --depth 1 \
+RUN git clone https://github.com/DuckLL/qira.git --depth 1 \
 && apt-fast update \
 && apt-fast -y install \
    sudo \
