@@ -44,6 +44,7 @@ RUN echo 'for dir in $HOME/.gem/ruby/*; do' >> ~/.bashrc \
    nasm \
    nmap \
    p7zip-full \
+   python2-pip \
    strace \
 
 #pip
