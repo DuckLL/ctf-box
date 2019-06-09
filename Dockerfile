@@ -9,7 +9,6 @@ RUN apt-fast update \
    libpcre++-dev \
    pcregrep \
    ruby-dev \
-&& apt-fast clean \
 
 # pip
 && pip2 install \
@@ -23,8 +22,6 @@ RUN apt-fast update \
    ujson \
    xortool \
    yara-python \
-&& rm -rf /tmp/* \
-
 
 # rubypwn
 && gem install \
@@ -36,7 +33,7 @@ RUN apt-fast update \
 # afl
 && wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz \
 && tar -zxvf ./afl-latest.tgz \
-&& cd ./afl-2.52b \
+&& cd ./afl-2* \
 && make \
 && cd ./qemu_mode \
 && ./build_qemu_support.sh \
@@ -65,4 +62,8 @@ RUN apt-fast update \
 && cd ./volatility \
 && python setup.py install \
 && cd ../ \
-&& rm -rf ./volatility
+&& rm -rf ./volatility \
+
+# cleanup
+&& apt clean \
+&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

@@ -6,8 +6,8 @@ COPY ./python.snippets /root/.config/nvim/plugged/vim-snippets/UltiSnips
 
 # qira qemu
 RUN git clone https://github.com/DuckLL/qira.git --depth 1 \
-&& apt-fast update \
-&& apt-fast -y install \
+&& apt update \
+&& apt -y install \
    sudo \
 && cd ./qira \
 && ./install.sh \
@@ -22,13 +22,16 @@ RUN git clone https://github.com/DuckLL/qira.git --depth 1 \
 && echo 'export PATH="/qemu/mipsel-linux-user:$PATH"' >> ~/.bashrc \
 && echo 'export PATH="/qemu/ppc-linux-user:$PATH"' >> ~/.bashrc \
 && echo 'export PATH="/qemu/x86_64-linux-user:$PATH"' >> ~/.bashrc \
+&& echo 'for dir in $HOME/.gem/ruby/*; do' >> ~/.bashrc \
+&& echo '     [ -d "$dir/bin" ] && PATH="${dir}/bin:${PATH}"' >> ~/.bashrc \
+&& echo 'done' >> ~/.bashrc \
 && ./pin_build.sh \
 && rm -rf /tmp/* \
 
 # apt
 && dpkg --add-architecture i386 \
-&& apt-fast update \
-&& apt-fast -y install \
+&& apt update \
+&& apt -y install \
    binutils-*-linux-gnu* \
    gdb-multiarch \
    g++ \
@@ -44,7 +47,6 @@ RUN git clone https://github.com/DuckLL/qira.git --depth 1 \
    nmap \
    p7zip-full \
    strace \
-&& apt-fast clean \
 
 #pip
 && pip2 install \
@@ -54,4 +56,8 @@ RUN git clone https://github.com/DuckLL/qira.git --depth 1 \
 # gdb
 && git clone https://github.com/longld/peda.git --depth 1 ~/peda \
 && git clone https://github.com/scwuaptx/Pwngdb.git --depth 1 ~/Pwngdb \
-&& cp ~/Pwngdb/.gdbinit ~/
+&& cp ~/Pwngdb/.gdbinit ~/ \
+
+# cleanup
+&& apt clean \
+&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
