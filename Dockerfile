@@ -1,4 +1,4 @@
-FROM duckll/ctf-box:mid
+FROM duckll/ctf-box:18.04-mid
 
 EXPOSE 3002
 
