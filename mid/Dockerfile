@@ -5,28 +5,26 @@ EXPOSE 3002
 COPY ./python.snippets /root/.config/nvim/plugged/vim-snippets/UltiSnips
 
 # qira qemu
-RUN git clone https://github.com/DuckLL/qira.git --depth 1 \
-&& apt update \
-&& apt -y install \
-   sudo \
-&& cd ./qira \
-&& ./install.sh \
-&& ./fetchlibs.sh \
-&& cd ./tracers/ \
-&& ./qemu_build.sh \
-&& ln -s /qira/tracers/qemu/qemu-latest /qemu \
-&& echo 'export PATH="/qemu/aarch64-linux-user:$PATH"' >> ~/.bashrc \
-&& echo 'export PATH="/qemu/arm-linux-user:$PATH"' >> ~/.bashrc \
-&& echo 'export PATH="/qemu/i386-linux-user:$PATH"' >> ~/.bashrc \
-&& echo 'export PATH="/qemu/mips-linux-user:$PATH"' >> ~/.bashrc \
-&& echo 'export PATH="/qemu/mipsel-linux-user:$PATH"' >> ~/.bashrc \
-&& echo 'export PATH="/qemu/ppc-linux-user:$PATH"' >> ~/.bashrc \
-&& echo 'export PATH="/qemu/x86_64-linux-user:$PATH"' >> ~/.bashrc \
-&& echo 'for dir in $HOME/.gem/ruby/*; do' >> ~/.bashrc \
+# RUN git clone https://github.com/DuckLL/qira.git --depth 1 \
+# && apt update \
+# && apt -y install \
+   # sudo \
+# && cd ./qira \
+# && ./install.sh \
+# && ./fetchlibs.sh \
+# && cd ./tracers/ \
+# && ./qemu_build.sh \
+# && ln -s /qira/tracers/qemu/qemu-latest /qemu \
+# && echo 'export PATH="/qemu/aarch64-linux-user:$PATH"' >> ~/.bashrc \
+# && echo 'export PATH="/qemu/arm-linux-user:$PATH"' >> ~/.bashrc \
+# && echo 'export PATH="/qemu/i386-linux-user:$PATH"' >> ~/.bashrc \
+# && echo 'export PATH="/qemu/mips-linux-user:$PATH"' >> ~/.bashrc \
+# && echo 'export PATH="/qemu/mipsel-linux-user:$PATH"' >> ~/.bashrc \
+# && echo 'export PATH="/qemu/ppc-linux-user:$PATH"' >> ~/.bashrc \
+# && echo 'export PATH="/qemu/x86_64-linux-user:$PATH"' >> ~/.bashrc \
+RUN echo 'for dir in $HOME/.gem/ruby/*; do' >> ~/.bashrc \
 && echo '     [ -d "$dir/bin" ] && PATH="${dir}/bin:${PATH}"' >> ~/.bashrc \
 && echo 'done' >> ~/.bashrc \
-&& ./pin_build.sh \
-&& rm -rf /tmp/* \
 
 # apt
 && dpkg --add-architecture i386 \
