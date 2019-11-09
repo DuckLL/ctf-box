@@ -1,34 +1,27 @@
-FROM duckll/ctf-box:18.04-mid
-
-EXPOSE 3002
+FROM duckll/ctf-box:mid
 
 # apt
-RUN apt-fast update \
-&& apt-fast install -y \
+RUN apt update \
+&& apt install -y \
    libtool-bin \
    libpcre++-dev \
+   nmap \
+   p7zip-full \
    pcregrep \
-   ruby-dev \
 
 # pip
 && pip2 install \
    angr \
-   distorm3 \
+   # distorm3 \
    gmpy \
-   openpyxl \
+   # openpyxl \
    pycrypto \
    Pillow \
-   sympy \
-   ujson \
+   # sympy \
+   # ujson \
    xortool \
-   yara-python \
+   # yara-python \
 
-# rubypwn
-&& gem install \
-    pry \
-    one_gadget \
-    seccomp-tools \
-    heapinfo \
 
 # afl
 && wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz \
@@ -57,12 +50,12 @@ RUN apt-fast update \
 # && make \
 
 # volatility
-&& cd / \
-&& git clone https://github.com/volatilityfoundation/volatility.git \
-&& cd ./volatility \
-&& python setup.py install \
-&& cd ../ \
-&& rm -rf ./volatility \
+# && cd / \
+# && git clone https://github.com/volatilityfoundation/volatility.git \
+# && cd ./volatility \
+# && python setup.py install \
+# && cd ../ \
+# && rm -rf ./volatility \
 
 # cleanup
 && apt clean \
