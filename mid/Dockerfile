@@ -7,8 +7,8 @@ RUN dpkg --add-architecture i386 \
 && apt update \
 && apt -y install \
    g++ \
-   g++:i386 \
    gdb-multiarch \
+   libc6:i386 \
    ltrace \
    make \
    nasm \
