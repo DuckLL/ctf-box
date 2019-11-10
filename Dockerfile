@@ -4,6 +4,8 @@ FROM duckll/ctf-box:mid
 RUN apt update \
 && apt install -y \
    automake \
+   bison \
+   libglib2.0-dev \
    libtool-bin \
    libpcre++-dev \
    nmap \
@@ -25,21 +27,19 @@ RUN apt update \
 
 
 # afl
-&& wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz \
-&& tar -zxvf ./afl-latest.tgz \
-&& cd ./afl-2* \
+&& cd /tmp \
+&& git clone https://github.com/google/AFL.git --depth 1 \
+&& cd AFL \
 && make \
+&& make install \
 && cd ./qemu_mode \
 && ./build_qemu_support.sh \
-&& cd / \
-&& rm ./afl-latest.tgz \
 
 # binwalk
+&& cd /tmp \
 && git clone https://github.com/devttys0/binwalk.git --depth 1 \
 && cd ./binwalk \
 && ./setup.py install \
-&& cd ../ \
-&& rm -rf ./binwalk \
 
 # pintool
 # && wget http://software.intel.com/sites/landingpage/pintool/downloads/pin-3.4-97438-gf90d1f746-gcc-linux.tar.gz \
