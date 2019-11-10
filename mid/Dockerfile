@@ -6,6 +6,7 @@ COPY ./python.snippets /root/.config/nvim/plugged/vim-snippets/UltiSnips
 RUN dpkg --add-architecture i386 \
 && apt update \
 && apt -y install \
+   cmake \
    g++ \
    gdb-multiarch \
    libc6:i386 \
@@ -17,10 +18,17 @@ RUN dpkg --add-architecture i386 \
    ruby-dev \
    strace \
 
-#pip
+# pip2
 && pip2 install \
    ipython \
    pwntools \
+
+# pip3
+&& pip3 install \
+   capstone \
+   keystone-engine \
+   ropper \
+   unicorn \
 
 # rubypwn
 && gem install \
