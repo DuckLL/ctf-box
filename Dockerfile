@@ -3,6 +3,7 @@ FROM duckll/ctf-box:mid
 # apt
 RUN apt update \
 && apt install -y \
+   automake \
    libtool-bin \
    libpcre++-dev \
    nmap \
